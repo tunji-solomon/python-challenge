@@ -17,6 +17,12 @@ def iterate_by_range(start = False, end = False):
         print(start)
         return iterate_by_range(start - 1)
     
+def get_length(iterable) -> int:
+    length = 0
+    for _ in iterable:
+        length += 1
+    return length
+    
 # Note: i made the list to accept any type of item
 def most_frequent_item(list_of_item : list) -> tuple | list[tuple]: 
     item_counter = {}
@@ -28,11 +34,7 @@ def most_frequent_item(list_of_item : list) -> tuple | list[tuple]:
     #         list_of_item[index] = item.strip().lower()
     
     #But i try to do it manually as much as possible
-    def get_length(iterable) -> int:
-        length = 0
-        for _ in iterable:
-            length += 1
-        return length
+
         
     # check if item is a string, so as to remove trailing white spaces and also make convert all to lowercase
     for i in range(get_length(list_of_item)):
@@ -63,7 +65,8 @@ def most_frequent_item(list_of_item : list) -> tuple | list[tuple]:
 
 numbers = [1, 2, 2, 3, 3, 4, 4, 4, "python", " Python", "python"]
 
-print(most_frequent_item(numbers))
+if __name__ == "__main__":
+    print(most_frequent_item(numbers))
         
     
     
