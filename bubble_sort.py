@@ -9,20 +9,34 @@
 def bubble_sort(interger_list : list[int]) -> list:
     from most_frequent import get_length
     
-    for i in range(get_length(interger_list)):
-        for j in range(i + 1, get_length(interger_list)):
-            left_side_value = interger_list[i]
-            right_side_value = interger_list[j]
-            if right_side_value < left_side_value:
-                temporary_left_value = left_side_value
-                interger_list[i] = right_side_value
-                interger_list[j] = temporary_left_value
-                
-    return interger_list
+    # MY VERSION
+    
+    # for i in range(get_length(interger_list)):
+    #     for j in range(get_length(interger_list) - i - 1):
+    #         left_side_value = interger_list[i]
+    #         right_side_value = interger_list[j]
+    #         if right_side_value < left_side_value:
+    #             temporary_left_value = left_side_value
+    #             interger_list[i] = right_side_value
+    #             interger_list[j] = temporary_left_value
+    # return interger_list
+    
+    # ANOTHER VERSION
+    
+    length = get_length(interger_list)
+    for i in range(length):
+        for j in range(length - i - 1):
+            left = interger_list[j]
+            right = interger_list[j + 1]
+            if left > right:
+                interger_list[j], interger_list[j + 1] = right, left
+    
+    return interger_list 
 
-numbers = [5, 2, 9, 1, 5, 6]
+if __name__ == "__main__":
+    numbers = [20, 5, 2, 9, 1, 5, 6]
 
-print(bubble_sort(numbers))
+    print(bubble_sort(numbers))
 
 
 

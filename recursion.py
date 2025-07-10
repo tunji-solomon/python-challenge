@@ -6,6 +6,7 @@
 # 2️⃣ Uses recursion (no loops!) to calculate and return the sum of all the numbers in the list.
 # 3️⃣ You cannot use sum() or loops — only recursion.
 
+
 def recursive_sum(interger_list: list[int]) -> int:
     
     def get_length(iterable) -> int:
