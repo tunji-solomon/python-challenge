@@ -1,3 +1,3 @@
-Hello world!
-This is a test. Hello again, world.
-Is this test working? Yes, this test works.
+This is a bad example.
+Sometimes ugly things happen.
+But we stay positive.

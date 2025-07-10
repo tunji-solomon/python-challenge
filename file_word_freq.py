@@ -22,28 +22,41 @@
 
 # Keep your custom get_length or get_index if you like!
 
-def word_frequency(file_path) -> dict:
-    import os
-    from most_frequent import get_length
-    
-    #function to split text by given argument and return a new list of splited characters
-    def split_text(text: str, split_by: str) -> list:
-        new_list = []
-        def recursor(text) -> list:
+#function to split text by given argument and return a new list of splited characters
+import os
+from most_frequent import get_length
+
+def split_text(text: str, *split_by) -> list:
+    new_list = []
+    def recursor(text) -> list:
+        for i in range(get_length(text)):
+            character = text[i]
+            if character in split_by:
+                new_list.append(text[:i])
+                text = text[i + 1:]
+                return recursor(text)
+        else:
             for i in range(get_length(text)):
                 character = text[i]
-                if character == split_by:
-                    new_list.append(text[:i])
-                    text = text[i + 1:]
-                    return recursor(text)
-            else:
-                for i in range(get_length(text)):
-                    character = text[i]
-                    if character in ["\n"]:
-                        new_list.append(text[:i])                        
-                return new_list
-                 
-        return recursor(text)
+                if character in ["\n"]:
+                    new_list.append(text[:i])                        
+            return new_list
+        
+    return recursor(text)
+
+#Count in number of occurence of words in a list and return a dictionary showing their frequency of occurence
+def word_counter(word_list: list[str]) -> dict:
+    counter = {}
+    for word in word_list:
+        if word in counter:
+            counter[word] += 1
+        else:
+            counter[word] = 1
+            
+    return counter  
+                
+def word_frequency(file_path) -> dict:
+    
     
     #function to remove punctuation marks from words
     def punctuation_mark_remover(words_list: list[str]) -> list:
@@ -59,16 +72,6 @@ def word_frequency(file_path) -> dict:
                     
         return new_list
     
-    #Count in number of occurence of words in a list and return a dictionary showing their frequency of occurence
-    def word_counter(word_list: list[str]) -> dict:
-        counter = {}
-        for word in word_list:
-            if word in counter:
-                counter[word] += 1
-            else:
-                counter[word] = 1
-                
-        return counter  
         
     #check if file exist
     if os.path.isfile(file_path) is False:
@@ -99,10 +102,11 @@ def word_frequency(file_path) -> dict:
         
     #return the frequency
     return frequecy
+      
 
-        
-        
-print(word_frequency("./sample.txt"))
+if __name__ == "__main__":
+    print(word_frequency("./sample.txt"))
+    
 
 
         

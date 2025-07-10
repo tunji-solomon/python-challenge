@@ -1,0 +1,11 @@
+[INFO] 2025-07-04 12:01:22 User logged in
+[Error]
+[ERROR] 2025-07-04 12:02:05 Failed to load resource
+[WARNING] 2025-07-04 12:03:10 Low disk space
+[INFO] 2025-07-04 12:04:00 User logged out
+[WARNING] 2025-07-05 12:03:10 Low disk space
+[ERROR] 2025-07-05 12:03:10 Low disk space
+[WARNING] 2025-07-02 12:03:10 Low disk space
+
+
+
