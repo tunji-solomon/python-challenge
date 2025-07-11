@@ -13,7 +13,7 @@ def categorize_word(word_list: list[str]) -> dict:
     
     word_length_counter = {}
     
-    def counter(word: str) -> int: #I defined this function to subtitute for the built in len function.
+    def counter(word: str) -> int: #I defined this function to subtitute for the built in
         count = 0
         for _ in word:
             count += 1

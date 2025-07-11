@@ -60,14 +60,16 @@ def censor_file(source_file, output_file) -> None:
     data = None
     with open(source_file) as file:
         data = file.readlines()
-    
+    import time
     for line in data:
         sentence_splitted = split_text(line, " ")
         censored_words_list = censor_word(sentence_splitted, "bad", "ugly")
         with open(f"./{output_file}", "+a") as file:
             for word in censored_words_list:
+                time.sleep(0.5)
                 file.write(f"{word} ")
             file.write("\n")
+    
                 
     print(f"File censored successfully and outputed to {output_file}")
             

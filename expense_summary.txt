@@ -1,0 +1,12 @@
+
+Total spent: $55.50
+
+By category:
+Food: $32.50
+Transport: $8.00
+Entertainment: $15.00
+
+By date:
+2025-07-04: $15.50
+2025-07-05: $40.00
+

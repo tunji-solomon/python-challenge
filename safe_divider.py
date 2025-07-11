@@ -24,7 +24,7 @@ def safe_divide(a, b) -> int:
     if b == 0:
         return "Output: Cannot divide by zero."
     
-    elif type(a) == (int or float) and type(b) == (int or float):
+    elif type(a)  [int,float] and type(b) == (int or float):
         result = a / b
         return f"Output: {result}"
     else:
