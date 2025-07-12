@@ -1,0 +1,2 @@
+2024-07-20,Shopping,200.30,Shopping for food
+2025-06-24,Electricity,500.26,Paid for electricity bill

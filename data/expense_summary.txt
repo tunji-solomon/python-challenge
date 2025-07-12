@@ -1,0 +1,20 @@
+Total spent: $700.56
+
+By category:
+Shopping: $200.30
+Electricity: $500.26
+
+By date:
+2024-07-20: $200.30
+2025-06-24: $500.26
+
+Total spent: $700.56
+
+By category:
+Shopping: $200.30
+Electricity: $500.26
+
+By date:
+2024-07-20: $200.30
+2025-06-24: $500.26
+

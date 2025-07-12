@@ -1,4 +1,4 @@
-def split(string : str, split_by : str) -> list:
+def split(string : str, *split_by : tuple) -> list:
     new_list = []
     current_index = 0
     for i in range(len(string)):
@@ -9,6 +9,6 @@ def split(string : str, split_by : str) -> list:
         new_list.append(string[current_index:])
     return new_list
  
-print(split("HELLO HOW. ARE YOU Have you seen your people.", " "))
-            
+if __name__ == "__main__":
+    split()            
             

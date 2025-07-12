@@ -34,25 +34,28 @@
 
 from expense_tracker import expense_tracker
 from most_frequent import get_length
+
+def remove_trailing_space(string: str) -> str:
+    new_string = ""
+    for i in range(get_length(string)):
+        if string[i] != " ":
+            break
+        else:
+            new_string = string[i + 1:]        
+            string = new_string
+    for i in range(1, get_length(new_string)):
+        if new_string[-i] != " ":
+            break
+        else:
+            string = new_string[0:-i]
+            
+    return string
+
 import os
 
 def expense_management_app(expense_file) -> None:
     
-    def remove_trailing_space(string: str) -> str:
-        new_string = ""
-        for i in range(get_length(string)):
-            if string[i] != " ":
-                break
-            else:
-                new_string = string[i + 1:]        
-                string = new_string
-        for i in range(1, get_length(new_string)):
-            if new_string[-i] != " ":
-                break
-            else:
-                string = new_string[0:-i]
-                
-        return string
+    
     def amount_validator(string : str) -> bool:
         if len(string) < 1:
             return False
@@ -64,7 +67,6 @@ def expense_management_app(expense_file) -> None:
             if string[i] in ".0123456789" == False:
                 return False
             if string[i] == ".":
-                print(i, "and", get_length(string)-i)
                 if not get_length(string) - i == 3:
                     return False
         else:
@@ -97,7 +99,20 @@ def expense_management_app(expense_file) -> None:
             print(f"Enter {i + 1} to {menu_list[i]}\n")
             
         option_selected = remove_trailing_space(input("Enter your option here: "))
+        
+        from custom_split import split
+        
+        file_path = split(expense_file, "/")
+        target_file_path = ""
+        target_file = file_path[-1]
+        for item in range(0, get_length(file_path) - 1):
+            target_file_path += file_path[item] + "/"
+        
         if option_selected == "1":
+                
+            if os.path.isdir(target_file_path) is False:
+                os.mkdir(target_file_path)
+                
             while True:
                 date = remove_trailing_space(input("\nEnter date expenses was incured: "))
                 if date_validator(date) == True:
@@ -112,18 +127,14 @@ def expense_management_app(expense_file) -> None:
                 else:
                     print("\nAmount must be of type float. example: $50.00")
             description = remove_trailing_space(input("\nEnter description of expenses: "))
-            
-            if os.path.isfile(expense_file) is False:
-                return "\nFile does not exist at specified path"
-            
-            with open(expense_file, "+a") as file:
+            with open(f"{target_file_path}{target_file}", "a") as file:
                 file.write(f"{date},{category},{amount},{description}\n")
                 
             print(f"\nExpense added to {expense_file}")
             
             
         if option_selected == "2":
-            summary_file = "expense_summary.txt"
+            summary_file = f"{target_file_path}expense_summary.txt"
             expense_tracker(expense_file,summary_file)
             
         if option_selected == "3":
@@ -131,7 +142,7 @@ def expense_management_app(expense_file) -> None:
             break
     
     
-    
-expense_management_app("expense.txt")
+if __name__ == "__main__":
+    expense_management_app("./data/expense.txt")
     
 
