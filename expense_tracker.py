@@ -98,4 +98,7 @@ def expense_tracker(source_file, output_file) -> None:
             file.write(f"{date}: ${exp:.2f}\n")
         file.write("\n")
                        
-expense_tracker("expense.txt", "expense_summary.txt")
+
+if __name__ == "__main__":
+    expense_tracker("expense.txt", "expense_summary.txt")
+    

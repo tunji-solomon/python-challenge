@@ -1,12 +1,16 @@
 
-Total spent: $55.50
+
+Total spent: $656.57
 
 By category:
 Food: $32.50
 Transport: $8.00
 Entertainment: $15.00
+Travelling: $601.07
 
 By date:
 2025-07-04: $15.50
 2025-07-05: $40.00
+2024-05-23: $300.40
+2024-05-26: $300.67
 

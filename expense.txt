@@ -3,3 +3,5 @@
 2025-07-05,Food,20.00,Dinner with friends
 2025-07-05,Entertainment,15.00,Movie ticket
 2025-07-05,Transport,5.00,Taxi ride
+2024-05-23,Travelling,300.40,A trip to San diego
+2024-05-26,Travelling,300.67,A trip to San diego
