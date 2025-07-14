@@ -92,44 +92,96 @@ class HashPass:
         
     if get_length(data) < 1:
         for item in characters:
-            encryption[item] = generate_random(5)
+            encryption[item] = []
+            for i in range(10):
+                encryption[item].append(generate_random(5))
         
         with open(f"{encryption_path}", "a") as file:
             file.write("ENCRYPTION STORAGE\n")
             file.write("="*18)
             for key, value in encryption.items():
                 file.write(f"\n{key}:{value}")
-
-    def encrypt_password(password: str) -> str:
-        '''
-        Hash password based on passed argument and return the hash.
-        '''
-        encryption = {}
+                
+    def get_encrypted_data() -> dict:
+                
+        encryption = {} 
         data = None
         with open(HashPass.encryption_path) as file:
             data = file.readlines()
         for lines in data:
             if ":" in lines:
                 splitted = split(lines, ":", "\n")
-                encryption[splitted[0]] = splitted[1]
-            
+                another = split(splitted[1],
+                                "[", ",", "]", "'", " ")
+                my_list = []
+                for i in another:
+                    if len(i) > 1:
+                        my_list.append(i)
+                
+                encryption[splitted[0]] = my_list 
+                
+        return encryption
+        
+
+    def encrypt_password(password: str) -> str:
+        '''
+        Hash password based on passed argument and return the hash.
+        '''
+        encryption = HashPass.get_encrypted_data()
+                  
         hashed_password = ""
         for character in password:
-            if character in encryption:
-                hashed_password += encryption[character]
+            if get_length(hashed_password) < 70:
+                # if len(password) < 14:
+                #     if get_length(hashed_password) > 3:
+                #         if get_length(hashed_password) - mid_insert == 5:
+                #             hashed_password += added_strings[random.randint(0, get_length(added_strings) - 1)]
+                #             print("HASHED", hashed_password)
+                #             mid_insert += 5
+                                
+                if character in encryption:
+                    
+                    # print(encryption[character], "TYPE OF", type(encryption[character]), "LENGHT", get_length(encryption[character]))
+                    random_index = random.randint(0, 9)
+                    for index, value in enumerate(encryption[character]):
+                        if random_index == index:
+                            hashed_password += value
+                            break
+                        
+                        # print(F"INDEX: {index} VALUE:{value} TYPE:{type(value)}")
+                    # value = encryption[character[2]]
+                    # print(type(value))
+                    
+                    # hashed_password += value
+                                        
+                # mid_insert += 1
         
         return hashed_password
     
     def decrypt_password(plain_password: str, hashed_password: str) -> bool:
         '''
         Description - Compare plain password with the hash. Returns a boolean
-        '''
-        plain_password = HashPass.encrypt_password(plain_password)
         
-        if plain_password == hashed_password:
-            return True
+        '''
+        
+        password = plain_password
+        plain_password = HashPass.encrypt_password(plain_password)
+        encryption = HashPass.get_encrypted_data() 
+        
+        end = 5
+        index_password = 0
+        if get_length(hashed_password) == get_length(plain_password):
+            for i in range(0,get_length(hashed_password), 5):
+                current_plain, current_hash = plain_password[i:end], hashed_password[i:end]
+                current_key = encryption[password[index_password]]
+                if not current_hash in current_key and  current_plain in current_key:
+                    return False
+                end += 5             
+                index_password += 1 
+            else:
+                return True
         else:
-            return False 
+            return False
 
 def auth_system() -> None:
     from advanced_expense_tracker import remove_trailing_space
