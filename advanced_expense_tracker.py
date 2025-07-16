@@ -141,7 +141,6 @@ def expense_management_app(expense_file) -> None:
             print("\nYou exited the application")
             break
     
-    
 if __name__ == "__main__":
     expense_management_app("./data/expense.txt")
     
