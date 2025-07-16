@@ -20,14 +20,12 @@ def bubble_sort(interger_list : list[int]) -> list:
     #             interger_list[i] = right_side_value
     #             interger_list[j] = temporary_left_value
     # return interger_list
-    
-    # ANOTHER VERSION
-    
+        
     length = get_length(interger_list)
-    for i in range(length):
-        for j in range(length - i - 1):
-            left = interger_list[j]
-            right = interger_list[j + 1]
+    for i in range(length): #(0, 4)
+        for j in range(0,length - i - 1): #(0, 4), 2
+            left = interger_list[j] #0
+            right = interger_list[j + 1] #1           #[5, 10, 20, 30, 70]
             if left > right:
                 interger_list[j], interger_list[j + 1] = right, left
     

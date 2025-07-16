@@ -28,6 +28,48 @@ def recursive_sum(interger_list: list[int]) -> int:
 
 numbers = [1, 2, 3, 4, 5]
 
-print(recursive_sum(numbers))
+# print(recursive_sum(numbers))
+
+def multiply (value: int, n: int) -> int:
+    #iteratively
+    # total = 0
+    # for i in range(n):
+    #     total += value
+    # return total
+    
+    if n == 1:
+        return value
+    else:
+        return value + multiply(value, n - 1)
         
     
+# print(multiply(5, 10))
+
+# def power(n, p):
+#     if p == 0:
+#         return 1
+#     elif p == 1:
+#         return n
+#     else:
+#         return n * power(n, p-1)
+    
+# print(power(2, 3))
+
+
+# def factorial(n):
+    
+#     if n == 1 :
+#         return n
+#     else:
+#         return n * factorial(n-1)
+        
+# print(factorial(4))
+
+def factorial(n):
+    
+    total = 1
+    for i in range(1,n + 1):
+        total *= i
+    print(total)
+    
+factorial(4)

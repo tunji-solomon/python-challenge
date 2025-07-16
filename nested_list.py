@@ -20,15 +20,15 @@ def flatten_list(nested_list: list[int, list]) -> list:
     from most_frequent import get_length
     
     
-    for i in range(get_length(nested_list)):
-        if type(nested_list[i]) == list:
-            for item in nested_list[i]:
-                nested_list.append(item)
-            nested_list[i:i+1] = []
-            return flatten_list(nested_list)
-    else:
-        nested_list = bubble_sort(nested_list)
-        return nested_list
+    # for i in range(get_length(nested_list)):
+    #     if type(nested_list[i]) == list:
+    #         for item in nested_list[i]:
+    #             nested_list.append(item)
+    #         nested_list[i:i+1] = []
+    #         return flatten_list(nested_list)
+    # else:
+    #     nested_list = bubble_sort(nested_list)
+    #     return nested_list
                 
 
 nested1 = nested = [1, [2, 3, [4, 5]], 6, [7, [8, 9]]]
@@ -37,4 +37,20 @@ nested2 = [1, [17, 20, [18]], [2, 16, 3, [4, [10], 5, [15, 19]]], 6, [7, [8, 9, 
 print(flatten_list(nested1))
 print(flatten_list(nested2))
         
+
+# def flatten(list: list[int, list]) -> list:
+#     new_list = []
+#     for item in list:
+#         if type(item) == list:
+#             while True:
+#                 for char in item:
+#                     new_list.append(char)
+                    
+#         new_list.append(item)
+                
+                
+#     return new_list
+
+
+# print(flatten(nested2))
             

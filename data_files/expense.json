@@ -1,0 +1,26 @@
+{
+  "users": {
+    "alice": [
+      {
+        "date": "2025-07-04",
+        "category": "Food",
+        "amount": 12.50,
+        "description": "Lunch at cafe"
+      },
+      {
+        "date": "2025-07-05",
+        "category": "Transport",
+        "amount": 5.00,
+        "description": "Taxi ride"
+      }
+    ],
+    "bob": [
+      {
+        "date": "2025-07-06",
+        "category": "Entertainment",
+        "amount": 15.00,
+        "description": "Movie ticket"
+      }
+    ]
+  }
+}
